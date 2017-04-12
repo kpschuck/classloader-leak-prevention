@@ -2,6 +2,7 @@ pipeline {
   agent {
     docker {
       image 'ubuntu:latest'
+      args '-u root:root'
     }
     
   }
@@ -11,7 +12,8 @@ pipeline {
         parallel(
           "Build": {
             echo 'Hello from docker'
-            echo sh(returnStdout: true, script: 'env')
+            echo '${sh(returnStdout: true, script: \'env\')}'
+            
           },
           "Test": {
             echo 'Testing'

@@ -8,7 +8,16 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo 'Hello from docker'
+        parallel(
+          "Build": {
+            echo 'Hello from docker'
+            
+          },
+          "Test": {
+            echo 'Testing'
+            
+          }
+        )
       }
     }
   }

@@ -11,7 +11,7 @@ pipeline {
         parallel(
           "Build": {
             echo 'Hello from docker'
-            
+            echo sh(returnStdout: true, script: 'env')
           },
           "Test": {
             echo 'Testing'
